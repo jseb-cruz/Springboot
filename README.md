@@ -17,6 +17,7 @@ Permite **crear, listar (con búsqueda)**, **editar**, **eliminar** y **cambiar 
 
 ## 3) Estructura del proyecto (real)
 
+´´´
 src/
 ├─ main/
 │  ├─ java/com/bezkoder/spring/thymeleaf/
@@ -32,7 +33,7 @@ src/
 │     ├─ static/                    # Recursos estáticos (CSS/JS/img)
 │     └─ application.properties     # Configuración
 └─ test/
-
+´´´
 
 ## 4) Explicación de carpetas
 
