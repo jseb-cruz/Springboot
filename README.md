@@ -1,83 +1,96 @@
-# Spring Boot Thymeleaf example: CRUD Application
+# Proyecto – Spring Boot + Thymeleaf (CRUD de Tutoriales)
+## 1) URL de la página
 
-Build a Spring Boot Thymeleaf CRUD example with Maven that use Spring Data JPA to interact with H2/MySQL/PostgreSQL database. You'll know:
-- How to configure Spring Data, JPA, Hibernate to work with Database
-- How to define Data Entity and Repository interfaces
-- Way to create Spring Controller to process HTTP requests
-- Way to use Spring Data JPA to interact with H2/MySQL/PostgreSQL Database
-- How to use Thymeleaf template engine for View layer
+`http://68.155.147.140:8080/tutorials` 
 
-![spring-boot-thymeleaf-example](spring-boot-thymeleaf-example.png)
 
-For more detail, please visit:
-> [Spring Boot Thymeleaf example: CRUD Application](https://www.bezkoder.com/spring-boot-thymeleaf-example/)
+## 2) Descripción del proyecto
+Aplicación web **CRUD** para gestionar **Tutoriales**, construida con **Spring Boot** (Web/MVC), **Thymeleaf** para vistas, y **Spring Data JPA** sobre **PostgreSQL** (configurado vía variables de entorno).
+Permite **crear, listar (con búsqueda)**, **editar**, **eliminar** y **cambiar el estado de publicación** de un tutorial.
 
-More Practice:
-> [Thymeleaf Pagination example](https://www.bezkoder.com/thymeleaf-pagination/)
+**Tecnologías principales**
+- Spring Boot (Web / MVC)
+- Thymeleaf (motor de plantillas)
+- Spring Data JPA (Hibernate) con PostgreSQL
+- Maven (Spring Boot Maven Plugin)
 
-> [Thymeleaf Pagination and Sorting example](https://www.bezkoder.com/thymeleaf-pagination-and-sorting-example/)
 
-> [Spring Boot File upload example with Multipart File](https://www.bezkoder.com/spring-boot-file-upload/)
+## 3) Estructura del proyecto (real)
 
-> [Spring Boot Pagination & Filter example | Spring JPA, Pageable](https://www.bezkoder.com/spring-boot-pagination-filter-jpa-pageable/)
+src/
+├─ main/
+│  ├─ java/com/bezkoder/spring/thymeleaf/
+│  │  ├─ controller/
+│  │  │  └─ TutorialController.java
+│  │  ├─ entity/
+│  │  │  └─ Tutorial.java
+│  │  ├─ repository/
+│  │  │  └─ TutorialRepository.java
+│  │  └─ SpringBootThymeleafExampleApplication.java
+│  └─ resources/
+│     ├─ templates/                 # Vistas Thymeleaf (.html)
+│     ├─ static/                    # Recursos estáticos (CSS/JS/img)
+│     └─ application.properties     # Configuración
+└─ test/
 
-> [Spring Data JPA Sort/Order by multiple Columns | Spring Boot](https://www.bezkoder.com/spring-data-sort-multiple-columns/)
 
-> [Spring Boot Repository Unit Test with @DataJpaTest](https://www.bezkoder.com/spring-boot-unit-test-jpa-repo-datajpatest/)
+## 4) Explicación de carpetas
 
-> [Deploy Spring Boot App on AWS – Elastic Beanstalk](https://www.bezkoder.com/deploy-spring-boot-aws-eb/)
+- **controller/**: Controladores Spring MVC. Aquí está `TutorialController` con la lógica de rutas y bindings a vistas Thymeleaf.
+- **entity/**: Entidades **JPA**; `Tutorial` mapea la tabla `tutorials` con campos `id`, `title`, `description`, `level`, `published`.
+- **repository/**: Repositorios **Spring Data JPA**. `TutorialRepository` extiende `JpaRepository<Tutorial, Integer>` e incluye query derivada `findByTitleContainingIgnoreCase` y un `@Query` de actualización para `published`.
+- **resources/**: Plantillas Thymeleaf (`templates`), recursos estáticos y `application.properties` con la configuración de la app.
 
-Exception Handling:
-> [Spring Boot @ControllerAdvice & @ExceptionHandler example](https://www.bezkoder.com/spring-boot-controlleradvice-exceptionhandler/)
 
-> [@RestControllerAdvice example in Spring Boot](https://www.bezkoder.com/spring-boot-restcontrolleradvice/)
+## 5) Configuración y entorno
+El proyecto está listo para **PostgreSQL** usando **variables de entorno**. Ejemplo de `application.properties`:
 
-Rest API:
-> [Spring Boot + MySQL: CRUD Rest API example](https://www.bezkoder.com/spring-boot-jpa-crud-rest-api/)
+```properties
+spring.h2.console.enabled=false
+spring.h2.console.path=/h2-ui
 
-> [Spring Boot + PostgreSQL: CRUD Rest API example](https://www.bezkoder.com/spring-boot-postgresql-example/)
-
-> [Spring Boot + SQL Server: CRUD Rest API example](https://www.bezkoder.com/spring-boot-sql-server/)
-
-> [Spring Boot + H2: CRUD Rest API example](https://www.bezkoder.com/spring-boot-jpa-h2-example/)
-
-> [Spring Boot + MongoDB: CRUD Rest API example](https://www.bezkoder.com/spring-boot-mongodb-crud/)
-
-> [Spring Boot + Oracle: CRUD Rest API example](https://www.bezkoder.com/spring-boot-hibernate-oracle/)
-
-> [Spring Boot + Cassandra: CRUD Rest API example](https://www.bezkoder.com/spring-boot-cassandra-crud/)
-
-Security:
-> [Spring Boot + Spring Security JWT Authentication & Authorization](https://www.bezkoder.com/spring-boot-jwt-authentication/)
-
-Fullstack:
-> [Vue + Spring Boot example](https://www.bezkoder.com/spring-boot-vue-js-crud-example/)
-
-> [Angular 8 + Spring Boot example](https://www.bezkoder.com/angular-spring-boot-crud/)
-
-> [Angular 10 + Spring Boot example](https://www.bezkoder.com/angular-10-spring-boot-crud/)
-
-> [Angular 11 + Spring Boot example](https://www.bezkoder.com/angular-11-spring-boot-crud/)
-
-> [Angular 12 + Spring Boot example](https://www.bezkoder.com/angular-12-spring-boot-crud/)
-
-> [Angular 13 + Spring Boot example](https://www.bezkoder.com/spring-boot-angular-13-crud/)
-
-> [Angular 14 + Spring Boot example](https://www.bezkoder.com/spring-boot-angular-14-crud/)
-
-> [React + Spring Boot + MySQL example](https://www.bezkoder.com/react-spring-boot-crud/)
-
-> [React + Spring Boot + PostgreSQL example](https://www.bezkoder.com/spring-boot-react-postgresql/)
-
-Run both Back-end & Front-end in one place:
-> [Integrate Angular with Spring Boot Rest API](https://www.bezkoder.com/integrate-angular-spring-boot/)
-
-> [Integrate React.js with Spring Boot Rest API](https://www.bezkoder.com/integrate-reactjs-spring-boot/)
-
-> [Integrate Vue.js with Spring Boot Rest API](https://www.bezkoder.com/integrate-vue-spring-boot/)
-
-## Run Spring Boot application
+spring.datasource.url=${SPRING_DATASOURCE_URL}
+spring.datasource.username=${SPRING_DATASOURCE_USERNAME}
+spring.datasource.password=${SPRING_DATASOURCE_PASSWORD}
+spring.datasource.driver-class-name=org.postgresql.Driver
+ 
+spring.jpa.show-sql=true
+spring.jpa.properties.hibernate.dialect=org.hibernate.dialect.PostgreSQLDialect
+spring.jpa.hibernate.ddl-auto= update
 ```
-mvn spring-boot:run
-```
+
+
+## 6) Cómo ejecutar el proyecto
+
+### Desarrollo
+
+1. Exportar variables de entorno para PostgreSQL:
+   ```bash
+   export SPRING_DATASOURCE_URL=jdbc:postgresql://localhost:5432/tutorialsdb
+   export SPRING_DATASOURCE_USERNAME=postgres
+   export SPRING_DATASOURCE_PASSWORD=postgres
+   ```
+2. Ejecutar la aplicación:
+   ```bash
+   mvn spring-boot:run
+   ```
+3. Abrir en el navegador: `http://68.155.147.140:8080/tutorials` 
+
+
+## 7) Endpoints o peticiones disponibles (rutas reales)
+
+| Funcionalidad | Ruta | Método | Descripción |
+|---|---|---|---|
+| Listar tutoriales (con búsqueda opcional) | `/tutorials` | GET | Lista todos los tutoriales o filtra por título (contiene, ignore case). |
+| Formulario de creación | `/tutorials/new` | GET | Muestra el formulario para crear un tutorial. |
+| Editar por ID | `/tutorials/{id}` | GET | Carga un tutorial por ID y muestra el formulario de edición. |
+| Eliminar por ID | `/tutorials/delete/{id}` | GET | Elimina un tutorial por ID y redirige a /tutorials. |
+
+
+
+
+## 8) Arquitectura del proyecto
+
+![alt text](image-1.png)
+
 
