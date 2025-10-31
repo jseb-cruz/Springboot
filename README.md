@@ -95,3 +95,4 @@ spring.jpa.hibernate.ddl-auto= update
 <blockquote class="imgur-embed-pub" lang="en" data-id="t7KBaqG"><a href="https://imgur.com/t7KBaqG">Click para ver la imagen</a></
 
 
+![DiagramaUML](/assets/Diagrama%20UML.png)
