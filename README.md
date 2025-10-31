@@ -92,6 +92,6 @@ spring.jpa.hibernate.ddl-auto= update
 
 ## 8) Arquitectura del proyecto
 
-![Diagrama UML](https://imgur.com/a/U4fMhGh)
+<blockquote class="imgur-embed-pub" lang="en" data-id="t7KBaqG"><a href="https://imgur.com/t7KBaqG">View post on imgur.com</a></blockquote><script async src="//s.imgur.com/min/embed.js" charset="utf-8"></script>
 
 
